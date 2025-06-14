@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet  - Forfaits MTN et Orange</title>
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --secondary-color: #ff7e33;
+            --dark-color: #333;
+            --light-color: #f8f9fa;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 100%;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 0;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            z-index: 1001;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-size: 1.1rem;
+            transition: var(--transition);
+            display: block;
+            padding: 8px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* Network Tabs */
+        .network-tabs {
+            display: flex;
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin: 20px 0;
+            box-shadow: var(--box-shadow);
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 10px 0;
+            margin-bottom: 15px;
+            scrollbar-width: none;
+        }
+
+        .filter-buttons::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            background-color: white;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Bundle Cards */
+        .bundles-container {
+            margin-bottom: 80px;
+        }
+
+        .bundle-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .bundle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .bundle-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .bundle-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .bundle-data {
+            font-weight: 500;
+        }
+
+        .bundle-price {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .bundle-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .bundle-btn:hover {
+            background-color: #3a5bef;
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1002;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-20px);
+            transition: var(--transition);
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #3a5bef;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        /* Success Message */
+        .success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1003;
+            text-align: center;
+            max-width: 90%;
+            display: none;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            color: var(--success-color);
+            margin-bottom: 15px;
+        }
+
+        .success-text {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .close-success {
+            padding: 8px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+        }
+
+        /* Footer Styles */
+       /* Footer Styles */
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 20px 0;
+    margin-top: auto;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.footer-section p, .footer-section a {
+    color: #ddd;
+    margin-bottom: 10px;
+    display: block;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    margin-top: 20px;
+}/* Footer Styles */
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 20px 0;
+    margin-top: auto;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.footer-section p, .footer-section a {
+    color: #ddd;
+    margin-bottom: 10px;
+    display: block;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    margin-top: 20px;
+}
+
+        /* Responsive Styles */
+        @media (min-width: 768px) {
+            .bundles-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            .footer-section {
+                flex: 1;
+            }
+        }
+
+        /* Network Specific Colors */
+        .mtn-bundle {
+            border-left: 4px solid #ffc107;
+        }
+        
+        .orange-bundle {
+            border-left: 4px solid #ff7e33;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Internet Gratuit</div>
+            <button class="nav-toggle">☰</button>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+        <div class="nav-menu-header">
+            <div class="logo">Menu</div>
+            <button class="close-menu">×</button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Forfaits Internet</a></li>
+        
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Aide</a></li>
+        </ul>
+    </nav>
+    <div class="overlay"></div>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="network-tabs">
+            <div class="tab active" data-network="mtn">MTN</div>
+            <div class="tab" data-network="orange">Orange</div>
+        </div>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-duration="all">Tous</button>
+            <button class="filter-btn" data-duration="1">1 Jour</button>
+            <button class="filter-btn" data-duration="7">7 Jours</button>
+            <button class="filter-btn" data-duration="30">30 Jours</button>
+        </div>
+
+        <div class="bundles-container">
+            <div class="bundles-grid" id="bundles-grid">
+                <!-- Bundles will be loaded here dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Bundle Purchase Modal -->
+    <div class="modal" id="purchaseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Acheter un forfait</h3>
+                <button class="close-modal">×</button>
+            </div>
+            <form id="purchaseForm">
+                <div class="form-group">
+                    <label for="bundle-name">Forfait sélectionné</label>
+                    <input type="text" id="bundle-name" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="recipient-phone">Numéro de téléphone du bénéficiaire *</label>
+                    <input type="tel" id="recipient-phone" required placeholder="6XXXXXXXX">
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close-modal-btn">Annuler</button>
+                    <button type="submit" class="btn btn-primary" id="payButton">Acheter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        <div class="success-icon">✓</div>
+        <div class="success-text">Félicitations! Votre forfait sera transféré dans 5 minutes.</div>
+        <button class="close-success">Fermer</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: support@internetgratuit.com</p>
+                <p>Téléphone: +237 691 586 235</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liens rapides</h3>
+                <a href="#">Accueil</a>
+                <a href="#">Forfaits</a>
+                <a href="#">Aide</a>
+            </div>
+            <div class="footer-section">
+                <h3>Réseaux sociaux</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Internet Gratuit. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Campay SDK -->
+    <script src="https://www.campay.net/sdk/js?app-id=t4-CJchgj_KuCtVpLMKZdXJBuxwi-8tniwJnD_jhPHow1doXKZx4BoSWU2Ib5uLO34wRiAf3gADlFnEAYKdZoQ"></script>
+
+    <script>
+        // Bundle Data
+        const bundles = {
+            mtn: [
+                {
+                    id: "mtn1",
+                    title: "Surf Day 1000",
+                    data: "5 GB pour 1 jour",
+                    price: "1000 FCFA",
+                    duration: 1,
+                    amount: 1000
+                },
+                {
+                    id: "mtn7",
+                    title: "Surf Day 2000",
+                    data: "12 GB pour 1 jour",
+                    price: "2000 FCFA",
+                    duration: 1,
+                    amount: 2000
+                },
+                {
+                    id: "mtn2",
+                    title: "Surf Week 1000",
+                    data: "4 GB pour 7 jours",
+                    price: "1000 FCFA",
+                    duration: 7,
+                    amount: 1000
+                },
+                 {
+                    id: "mtn6",
+                    title: "Surf Week 3000",
+                    data: "Data Illimite(3G Freesurf) pour 7 jours",
+                    price: "3000 FCFA",
+                    duration: 7,
+                    amount: 3000
+                },
+                {
+                    id: "mtn3",
+                    title: "Surf Month 8000",
+                    data: "2 GB par jour pour 30 jours",
+                    price: "8000 FCFA",
+                    duration: 30,
+                    amount: 8000
+                },
+                {
+                    id: "mtn4",
+                    title: "Surf Month 5000",
+                    data: "10 GB + Illimite(3G Freesurf) pour 30 jours",
+                    price: "5000 FCFA",
+                    duration: 30,
+                    amount: 5000
+                },
+                {
+                    id: "mtn5",
+                    title: "Daily Bundle 1500F",
+                    data: "8 GB pour 1 jour",
+                    price: "1500 FCFA",
+                    duration: 1,
+                    amount: 1500
+                },
+                {
+                    id: "mtn8",
+                    title: "Surf Month 1000",
+                    data: "10 GB pour 30 jours",
+                    price: "1000 FCFA",
+                    duration: 30,
+                    amount: 1000
+                }
+            ],
+            orange: [
+                {
+                    id: "orange1",
+                    title: "Surf Day 1000",
+                    data: "5 GB pour 1 jour",
+                    price: "1000 FCFA",
+                    duration: 1,
+                    amount: 1000
+                },
+                {
+                    id: "orange7",
+                    title: "Surf Day 2000",
+                    data: "12 GB pour 1 jour",
+                    price: "2000 FCFA",
+                    duration: 1,
+                    amount: 2000
+                },
+                {
+                    id: "orange2",
+                    title: "Surf Week 1000",
+                    data: "4 GB pour 7 jours",
+                    price: "1000 FCFA",
+                    duration: 7,
+                    amount: 1000
+                },
+                 {
+                    id: "orange6",
+                    title: "Surf Week 3000",
+                    data: "Data Illimite(3G Freesurf) pour 7 jours",
+                    price: "3000 FCFA",
+                    duration: 7,
+                    amount: 3000
+                },
+                {
+                    id: "orange3",
+                    title: "Surf Month 8000",
+                    data: "2 GB par jour pour 30 jours",
+                    price: "8000 FCFA",
+                    duration: 30,
+                    amount: 8000
+                },
+                {
+                    id: "orange4",
+                    title: "Surf Month 5000",
+                    data: "10 GB + Illimite(3G Freesurf) pour 30 jours",
+                    price: "5000 FCFA",
+                    duration: 30,
+                    amount: 5000
+                },
+                {
+                    id: "orange5",
+                    title: "Daily Bundle 1500F",
+                    data: "8 GB pour 1 jour",
+                    price: "1500 FCFA",
+                    duration: 1,
+                    amount: 1500
+                },
+                {
+                    id: "orange8",
+                    title: "Surf Month 1000",
+                    data: "10 GB pour 30 jours",
+                    price: "1000 FCFA",
+                    duration: 30,
+                    amount: 1000
+                }
+            ]
+        };
+
+        // DOM Elements
+        const navToggle = document.querySelector('.nav-toggle');
+        const closeMenu = document.querySelector('.close-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        const overlay = document.querySelector('.overlay');
+        const tabs = document.querySelectorAll('.tab');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const bundlesGrid = document.getElementById('bundles-grid');
+        const purchaseModal = document.getElementById('purchaseModal');
+        const closeModalBtn = document.querySelector('.close-modal');
+        const closeModalBtns = document.querySelectorAll('.close-modal-btn');
+        const purchaseForm = document.getElementById('purchaseForm');
+        const bundleNameInput = document.getElementById('bundle-name');
+        const successMessage = document.getElementById('successMessage');
+        const closeSuccessBtn = document.querySelector('.close-success');
+        const footer = document.querySelector('footer');
+
+        // Current selected network and duration filter
+        let currentNetwork = 'mtn';
+        let currentDuration = 'all';
+        let selectedBundle = null;
+
+        // Initialize the page
+        function init() {
+            renderBundles();
+            setupEventListeners();
+        }
+
+        // Render bundles based on current filters
+        function renderBundles() {
+            bundlesGrid.innerHTML = '';
+            
+            const filteredBundles = bundles[currentNetwork].filter(bundle => {
+                if (currentDuration === 'all') return true;
+                return bundle.duration === parseInt(currentDuration);
+            });
+            
+            if (filteredBundles.length === 0) {
+                bundlesGrid.innerHTML = '<p>Aucun forfait disponible pour ces critères.</p>';
+                return;
+            }
+            
+            filteredBundles.forEach(bundle => {
+                const bundleCard = document.createElement('div');
+                bundleCard.className = `bundle-card ${currentNetwork}-bundle`;
+                bundleCard.innerHTML = `
+                    <h3 class="bundle-title">${bundle.title}</h3>
+                    <div class="bundle-details">
+                        <span class="bundle-data">${bundle.data}</span>
+                        <span class="bundle-price">${bundle.price}</span>
+                    </div>
+                    <button class="bundle-btn" data-id="${bundle.id}">Acheter</button>
+                `;
+                bundlesGrid.appendChild(bundleCard);
+            });
+            
+            // Add event listeners to bundle buttons
+            document.querySelectorAll('.bundle-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const bundleId = btn.getAttribute('data-id');
+                    selectedBundle = [...bundles.mtn, ...bundles.orange].find(b => b.id === bundleId);
+                    openPurchaseModal(selectedBundle);
+                });
+            });
+        }
+
+       function openPurchaseModal(bundle) {
+    bundleNameInput.value = `${bundle.title} - ${bundle.data} (${bundle.price})`;
+    purchaseModal.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Configure Campay SDK with the selected bundle's price
+    campay.options({
+        payButtonId: "payButton",
+        description: `Achat forfait ${bundle.title}`,
+        amount: bundle.amount,
+        currency: "XAF",
+        externalReference: `internet_${bundle.id}_${Date.now()}`,
+        redirectUrl: "",
+        showAmount: false, // This hides the amount input field
+        allowAmountOverride: false // This prevents user from changing amount
+    });
+}
+
+        // Close purchase modal
+        function closePurchaseModal() {
+            purchaseModal.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Show success message
+        function showSuccessMessage() {
+            successMessage.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close success message
+        function closeSuccessMessage() {
+            successMessage.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Setup all event listeners
+        function setupEventListeners() {
+            // Navigation toggle
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeMenu.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            overlay.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                purchaseModal.classList.remove('active');
+                successMessage.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            // Network tabs
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    currentNetwork = tab.getAttribute('data-network');
+                    renderBundles();
+                });
+            });
+            
+            // Filter buttons
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentDuration = btn.getAttribute('data-duration');
+                    renderBundles();
+                });
+            });
+            
+            // Modal close buttons
+            closeModalBtn.addEventListener('click', closePurchaseModal);
+            closeModalBtns.forEach(btn => {
+                btn.addEventListener('click', closePurchaseModal);
+            });
+            
+            // Purchase form submission
+           purchaseForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const recipientPhone = document.getElementById('recipient-phone').value;
+    const payerPhone = document.getElementById('payer-phone').value;
+    
+    // Validate phone numbers
+    if(!recipientPhone || !payerPhone) {
+        alert('Veuillez entrer les numéros de téléphone');
+        return;
+    }
+    
+    // The actual payment is handled by Campay SDK
+    // The amount is already set and cannot be changed
+    campay.pay({
+        phone: payerPhone,
+        amount: selectedBundle.amount,
+        description: `Forfait ${selectedBundle.title} pour ${recipientPhone}`
+    });
+});
+            
+            // Success message close
+            closeSuccessBtn.addEventListener('click', closeSuccessMessage);
+            
+            // Campay callbacks
+            campay.onSuccess = function(data) { 
+                console.log('Payment success:', data);
+                closePurchaseModal();
+                showSuccessMessage();
+            };
+            
+            campay.onFail = function(data) { 
+                console.log('Payment failed:', data);
+                alert('Le paiement a échoué. Veuillez réessayer.');
+            };
+            
+            campay.onModalClose = function(data) { 
+                console.log('Payment modal closed:', data);
+            };
+            
+           
+        }
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
