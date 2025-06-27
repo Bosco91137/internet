@@ -666,349 +666,1468 @@
     </footer>
 
     <!-- Campay SDK -->
-    <script src="https://www.campay.net/sdk/js?app-id=t4-CJchgj_KuCtVpLMKZdXJBuxwi-8tniwJnD_jhPHow1doXKZx4BoSWU2Ib5uLO34wRiAf3gADlFnEAYKdZoQ"></script>
-
+   <script src="https://www.campay.net/sdk/js?app-id=t4-CJchgj_KuCtVpLMKZdXJBuxwi-8tniwJnD_jhPHow1doXKZx4BoSWU2Ib5uLO34wRiAf3gADlFnEAYKdZoQ"></script>
     <script>
-        // Bundle Data
-        const bundles = {
-            mtn: [
-                {
-                    id: "mtn1",
-                    title: "Surf Day 1000",
-                    data: "5 GB pour 1 jour",
-                    price: "1000 FCFA",
-                    duration: 1,
-                    amount: 1000
-                },
-                {
-                    id: "mtn7",
-                    title: "Surf Day 2000",
-                    data: "12 GB pour 1 jour",
-                    price: "2000 FCFA",
-                    duration: 1,
-                    amount: 2000
-                },
-                {
-                    id: "mtn2",
-                    title: "Surf Week 1000",
-                    data: "4 GB pour 7 jours",
-                    price: "1000 FCFA",
-                    duration: 7,
-                    amount: 1000
-                },
-                {
-                    id: "mtn6",
-                    title: "Surf Week 3000",
-                    data: "Data Illimite(3G) pour 7 jours",
-                    price: "3000 FCFA",
-                    duration: 7,
-                    amount: 3000
-                },
-                {
-                    id: "mtn3",
-                    title: "Surf Month 8000",
-                    data: "2 GB par jour pour 30 jours",
-                    price: "8000 FCFA",
-                    duration: 30,
-                    amount: 8000
-                },
-                {
-                    id: "mtn4",
-                    title: "Surf Month 5000",
-                    data: "10 GB + Illimite(3G) pour 30 jours",
-                    price: "5000 FCFA",
-                    duration: 30,
-                    amount: 5000
-                },
-                {
-                    id: "mtn5",
-                    title: "Daily Bundle 1500F",
-                    data: "8 GB pour 1 jour",
-                    price: "1500 FCFA",
-                    duration: 1,
-                    amount: 1500
-                },
-                {
-                    id: "mtn8",
-                    title: "Surf Month 1000",
-                    data: "10 GB pour 30 jours",
-                    price: "1000 FCFA",
-                    duration: 30,
-                    amount: 1000
-                }
-            ],
-            orange: [
-                {
-                    id: "orange1",
-                    title: "Surf Day 1000",
-                    data: "5 GB pour 1 jour",
-                    price: "1000 FCFA",
-                    duration: 1,
-                    amount: 1000
-                },
-                {
-                    id: "orange7",
-                    title: "Surf Day 2000",
-                    data: "12 GB pour 1 jour",
-                    price: "2000 FCFA",
-                    duration: 1,
-                    amount: 2000
-                },
-                {
-                    id: "orange2",
-                    title: "Surf Week 1000",
-                    data: "4 GB pour 7 jours",
-                    price: "1000 FCFA",
-                    duration: 7,
-                    amount: 1000
-                },
-                {
-                    id: "orange6",
-                    title: "Surf Week 3000",
-                    data: "Data Illimite(3G) pour 7 jours",
-                    price: "3000 FCFA",
-                    duration: 7,
-                    amount: 3000
-                },
-                {
-                    id: "orange3",
-                    title: "Surf Month 8000",
-                    data: "2 GB par jour pour 30 jours",
-                    price: "8000 FCFA",
-                    duration: 30,
-                    amount: 8000
-                },
-                {
-                    id: "orange4",
-                    title: "Surf Month 5000",
-                    data: "10 GB + Illimite(3G) pour 30 jours",
-                    price: "5000 FCFA",
-                    duration: 30,
-                    amount: 5000
-                },
-                {
-                    id: "orange5",
-                    title: "Daily Bundle 1500F",
-                    data: "8 GB pour 1 jour",
-                    price: "1500 FCFA",
-                    duration: 1,
-                    amount: 1500
-                },
-                {
-                    id: "orange8",
-                    title: "Surf Month 1000",
-                    data: "10 GB pour 30 jours",
-                    price: "1000 FCFA",
-                    duration: 30,
-                    amount: 1000
-                }
-            ]
-        };
-
-        // DOM Elements
-        const navToggle = document.querySelector('.nav-toggle');
-        const closeMenu = document.querySelector('.close-menu');
-        const navMenu = document.querySelector('.nav-menu');
-        const overlay = document.querySelector('.overlay');
-        const tabs = document.querySelectorAll('.tab');
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const bundlesGrid = document.getElementById('bundles-grid');
-        const purchaseModal = document.getElementById('purchaseModal');
-        const closeModalBtn = document.querySelector('.close-modal');
-        const closeModalBtns = document.querySelectorAll('.close-modal-btn');
-        const purchaseForm = document.getElementById('purchaseForm');
-        const bundleNameInput = document.getElementById('bundle-name');
-        const successMessage = document.getElementById('successMessage');
-        const closeSuccessBtn = document.querySelector('.close-success');
-
-        // Current selected network and duration filter
-        let currentNetwork = 'mtn';
-        let currentDuration = 'all';
-        let selectedBundle = null;
-
-        // Initialize the page
-        function init() {
-            renderBundles();
-            setupEventListeners();
+      // Bundle Data
+const bundles = {
+    mtn: [
+        {
+            id: "mtn1",
+            title: "Surf Day 1000",
+            data: "5 GB pour 1 jour",
+            price: "1000 FCFA",
+            duration: 1,
+            amount: 1000
+        },
+        {
+            id: "mtn7",
+            title: "Surf Day 2000",
+            data: "12 GB pour 1 jour",
+            price: "2000 FCFA",
+            duration: 1,
+            amount: 2000
+        },
+        {
+            id: "mtn2",
+            title: "Surf Week 1000",
+            data: "4 GB pour 7 jours",
+            price: "1000 FCFA",
+            duration: 7,
+            amount: 1000
+        },
+        {
+            id: "mtn6",
+            title: "Surf Week 3000",
+            data: "Data Illimite(3G) pour 7 jours",
+            price: "3000 FCFA",
+            duration: 7,
+            amount: 3000
+        },
+        {
+            id: "mtn3",
+            title: "Surf Month 8000",
+            data: "2 GB par jour pour 30 jours",
+            price: "8000 FCFA",
+            duration: 30,
+            amount: 8000
+        },
+        {
+            id: "mtn4",
+            title: "Surf Month 5000",
+            data: "10 GB + Illimite(3G) pour 30 jours",
+            price: "5000 FCFA",
+            duration: 30,
+            amount: 5000
+        },
+        {
+            id: "mtn5",
+            title: "Daily Bundle 1500F",
+            data: "8 GB pour 1 jour",
+            price: "1500 FCFA",
+            duration: 1,
+            amount: 1500
+        },
+        {
+            id: "mtn8",
+            title: "Surf Month 1000",
+            data: "10 GB pour 30 jours",
+            price: "1000 FCFA",
+            duration: 30,
+            amount: 1000
         }
+    ],
+    orange: [
+        {
+            id: "orange1",
+            title: "Surf Day 1000",
+            data: "5 GB pour 1 jour",
+            price: "1000 FCFA",
+            duration: 1,
+            amount: 1000
+        },
+        {
+            id: "orange7",
+            title: "Surf Day 2000",
+            data: "12 GB pour 1 jour",
+            price: "2000 FCFA",
+            duration: 1,
+            amount: 2000
+        },
+        {
+            id: "orange2",
+            title: "Surf Week 1000",
+            data: "4 GB pour 7 jours",
+            price: "1000 FCFA",
+            duration: 7,
+            amount: 1000
+        },
+        {
+            id: "orange6",
+            title: "Surf Week 3000",
+            data: "Data Illimite(3G) pour 7 jours",
+            price: "3000 FCFA",
+            duration: 7,
+            amount: 3000
+        },
+        {
+            id: "orange3",
+            title: "Surf Month 8000",
+            data: "2 GB par jour pour 30 jours",
+            price: "8000 FCFA",
+            duration: 30,
+            amount: 8000
+        },
+        {
+            id: "orange4",
+            title: "Surf Month 5000",
+            data: "10 GB + Illimite(3G) pour 30 jours",
+            price: "5000 FCFA",
+            duration: 30,
+            amount: 5000
+        },
+        {
+            id: "orange5",
+            title: "Daily Bundle 1500F",
+            data: "8 GB pour 1 jour",
+            price: "1500 FCFA",
+            duration: 1,
+            amount: 1500
+        },
+        {
+            id: "orange8",
+            title: "Surf Month 1000",
+            data: "10 GB pour 30 jours",
+            price: "1000 FCFA",
+            duration: 30,
+            amount: 1000
+        }
+    ]
+};
 
-        // Render bundles based on current filters
-        function renderBundles() {
-            bundlesGrid.innerHTML = '';
-            
-            const filteredBundles = bundles[currentNetwork].filter(bundle => {
-                if (currentDuration === 'all') return true;
-                return bundle.duration === parseInt(currentDuration);
+// DOM Elements
+const navToggle = document.querySelector('.nav-toggle');
+const closeMenu = document.querySelector('.close-menu');
+const navMenu = document.querySelector('.nav-menu');
+const overlay = document.querySelector('.overlay');
+const tabs = document.querySelectorAll('.tab');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const bundlesGrid = document.getElementById('bundles-grid');
+const purchaseModal = document.getElementById('purchaseModal');
+const closeModalBtn = document.querySelector('.close-modal');
+const closeModalBtns = document.querySelectorAll('.close-modal-btn');
+const purchaseForm = document.getElementById('purchaseForm');
+const bundleNameInput = document.getElementById('bundle-name');
+const recipientPhoneInput = document.getElementById('recipient-phone');
+const payerPhoneInput = document.getElementById('payer-phone');
+const successMessage = document.getElementById('successMessage');
+const closeSuccessBtn = document.querySelector('.close-success');
+const payButton = document.getElementById('payButton');
+
+// Current selected network and duration filter
+let currentNetwork = 'mtn';
+let currentDuration = 'all';
+let selectedBundle = null;
+let campayReady = false;
+
+// Initialize the page
+function init() {
+    renderBundles();
+    setupEventListeners();
+    checkCampayReady();
+}
+
+// Check if Campay SDK is ready
+function checkCampayReady() {
+    if (typeof campay !== 'undefined') {
+        campayReady = true;
+        console.log('Campay SDK is ready');
+    } else {
+        console.warn('Campay SDK not loaded yet, retrying...');
+        setTimeout(checkCampayReady, 500);
+    }
+}
+
+// Render bundles based on current filters
+function renderBundles() {
+    bundlesGrid.innerHTML = '';
+    
+    const filteredBundles = bundles[currentNetwork].filter(bundle => {
+        if (currentDuration === 'all') return true;
+        return bundle.duration === parseInt(currentDuration);
+    });
+    
+    if (filteredBundles.length === 0) {
+        bundlesGrid.innerHTML = '<p class="no-bundles">Aucun forfait disponible pour ces critères.</p>';
+        return;
+    }
+    
+    filteredBundles.forEach(bundle => {
+        const bundleCard = document.createElement('div');
+        bundleCard.className = `bundle-card ${currentNetwork}-bundle`;
+        bundleCard.innerHTML = `
+            <h3 class="bundle-title">${bundle.title}</h3>
+            <div class="bundle-details">
+                <span class="bundle-data">${bundle.data}</span>
+                <span class="bundle-price">${bundle.price}</span>
+            </div>
+            <button class="bundle-btn" data-id="${bundle.id}">Acheter</button>
+        `;
+        bundlesGrid.appendChild(bundleCard);
+    });
+    
+    // Add event listeners to bundle buttons
+    document.querySelectorAll('.bundle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const bundleId = btn.getAttribute('data-id');
+            selectedBundle = [...bundles.mtn, ...bundles.orange].find(b => b.id === bundleId);
+            openPurchaseModal(selectedBundle);
+        });
+    });
+}
+
+function openPurchaseModal(bundle) {
+    selectedBundle = bundle;
+    bundleNameInput.value = `${bundle.title} - ${bundle.data} (${bundle.price})`;
+    
+    // Reset form and enable payment button
+    purchaseForm.reset();
+    payButton.disabled = false;
+    payButton.textContent = 'Payer avec Mobile Money';
+    
+    purchaseModal.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Configure Campay payment if SDK is ready
+    if (campayReady) {
+        configureCampayPayment();
+    } else {
+        console.warn('Campay not ready yet, will configure when ready');
+    }
+}
+
+function configureCampayPayment() {
+    if (!selectedBundle) return;
+    
+    console.log('Configuring Campay with amount:', selectedBundle.amount);
+    
+    campay.options({
+        payButtonId: "payButton",
+        description: `Forfait ${selectedBundle.title}`,
+        amount: selectedBundle.amount,
+        currency: "XAF",
+        externalReference: `internet_${selectedBundle.id}_${Date.now()}`,
+        redirectUrl: "",
+        showAmount: false,
+        allowAmountOverride: false
+    });
+}
+
+// Close purchase modal
+function closePurchaseModal() {
+    purchaseModal.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Show success message
+function showSuccessMessage() {
+    successMessage.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close success message
+function closeSuccessMessage() {
+    successMessage.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Validate Cameroon phone number
+function validatePhoneNumber(phone) {
+    return /^[67]\d{8}$/.test(phone);
+}
+
+// Setup all event listeners
+function setupEventListeners() {
+    // Navigation toggle
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+    
+    closeMenu.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    
+    overlay.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        purchaseModal.classList.remove('active');
+        successMessage.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    
+    // Network tabs
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            currentNetwork = tab.getAttribute('data-network');
+            renderBundles();
+        });
+    });
+    
+    // Filter buttons
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentDuration = btn.getAttribute('data-duration');
+            renderBundles();
+        });
+    });
+    
+    // Modal close buttons
+    closeModalBtn.addEventListener('click', closePurchaseModal);
+    closeModalBtns.forEach(btn => {
+        btn.addEventListener('click', closePurchaseModal);
+    });
+    
+    // Purchase form submission
+    purchaseForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const recipientPhone = recipientPhoneInput.value.trim();
+        const payerPhone = payerPhoneInput.value.trim();
+        
+        // Validate phone numbers
+        if (!validatePhoneNumber(recipientPhone)) {
+            alert('Veuillez entrer un numéro de bénéficiaire valide (9 chiffres commençant par 6 ou 7)');
+            return;
+        }
+        
+        if (!validatePhoneNumber(payerPhone)) {
+            alert('Veuillez entrer votre numéro valide (9 chiffres commençant par 6 ou 7)');
+            return;
+        }
+        
+        if (!campayReady) {
+            alert('Le système de paiement est temporairement indisponible');
+            return;
+        }
+        
+        if (!selectedBundle) {
+            alert('Aucun forfait sélectionné');
+            return;
+        }
+        
+        try {
+            // Process payment with Campay
+            const paymentData = await campay.pay({
+                phone: payerPhone,
+                amount: selectedBundle.amount,
+                description: `Forfait ${selectedBundle.title} pour ${recipientPhone}`
             });
             
-            if (filteredBundles.length === 0) {
-                bundlesGrid.innerHTML = '<p class="no-bundles">Aucun forfait disponible pour ces critères.</p>';
-                return;
+            console.log('Payment successful:', paymentData);
+            closePurchaseModal();
+            showSuccessMessage();
+        } catch (error) {
+            console.error('Payment error:', error);
+            alert(`Erreur de paiement: ${error.message || 'Une erreur est survenue'}`);
+        }
+    });
+    
+    // Success message close
+    closeSuccessBtn.addEventListener('click', closeSuccessMessage);
+    
+    // Reconfigure Campay when it becomes ready
+    document.addEventListener('campayReady', () => {
+        campayReady = true;
+        if (purchaseModal.classList.contains('active')) {
+            configureCampayPayment();
+        }
+    });
+}
+
+// Initialize the app when DOM is loaded
+document.addEventListener('DOMContentLoaded', init);
+
+// Fallback event for Campay readiness
+if (typeof campay !== 'undefined') {
+    document.dispatchEvent(new Event('campayReady'));
+}
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forfaits Internet MTN et Orange Cameroun</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --mtn-yellow: #ffc107;
+            --mtn-dark: #ff9800;
+            --orange: #ff7e33;
+            --orange-dark: #e64a19;
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --white: #ffffff;
+            --gray: #95a5a6;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--white);
+        }
+        
+        .nav-toggle {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: block;
+        }
+        
+        /* Navigation Menu */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100vh;
+            background-color: var(--white);
+            z-index: 1000;
+            transition: left 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-menu.active {
+            left: 0;
+        }
+        
+        .nav-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .close-menu {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .nav-links {
+            list-style: none;
+            padding: 20px 0;
+        }
+        
+        .nav-links li {
+            margin-bottom: 10px;
+        }
+        
+        .nav-links a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--dark);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: var(--light);
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        /* Main Content */
+        main {
+            padding: 20px 0 40px;
+            min-height: calc(100vh - 120px);
+        }
+        
+        /* Network Tabs */
+        .network-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            color: var(--white);
+        }
+        
+        .tab[data-network="mtn"] {
+            background-color: var(--mtn-yellow);
+            color: var(--dark);
+        }
+        
+        .tab[data-network="mtn"].active {
+            background-color: var(--mtn-dark);
+            color: var(--white);
+        }
+        
+        .tab[data-network="orange"] {
+            background-color: var(--orange);
+            color: var(--white);
+        }
+        
+        .tab[data-network="orange"].active {
+            background-color: var(--orange-dark);
+        }
+        
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: var(--light);
+            color: var(--dark);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+        
+        /* Bundles Grid */
+        .bundles-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .bundle-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bundle-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .mtn-bundle {
+            border-left: 5px solid var(--mtn-yellow);
+        }
+        
+        .orange-bundle {
+            border-left: 5px solid var(--orange);
+        }
+        
+        .bundle-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .bundle-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .bundle-data {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        
+        .bundle-price {
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .bundle-btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .mtn-bundle .bundle-btn {
+            background-color: var(--mtn-yellow);
+            color: var(--dark);
+        }
+        
+        .mtn-bundle .bundle-btn:hover {
+            background-color: var(--mtn-dark);
+            color: var(--white);
+        }
+        
+        .orange-bundle .bundle-btn {
+            background-color: var(--orange);
+            color: var(--white);
+        }
+        
+        .orange-bundle .bundle-btn:hover {
+            background-color: var(--orange-dark);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-20px);
+            transition: transform 0.3s;
+            position: relative;
+            z-index: 1002;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        .form-group {
+            padding: 15px 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--secondary);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--light);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--mtn-yellow);
+        }
+        
+        .modal-footer {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            border-top: 1px solid var(--light);
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-secondary {
+            background-color: var(--gray);
+            color: var(--white);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+        
+        .btn-primary {
+            background-color: var(--success);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: #219653;
+        }
+        
+        /* Success Message */
+        .success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1002;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            max-width: 90%;
+            width: 400px;
+        }
+        
+        .success-message.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .success-icon {
+            font-size: 3rem;
+            color: var(--success);
+            margin-bottom: 15px;
+        }
+        
+        .success-text {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .close-success {
+            padding: 8px 20px;
+            background-color: var(--success);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 30px 0 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: var(--light);
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (min-width: 576px) {
+            .bundles-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            filteredBundles.forEach(bundle => {
-                const bundleCard = document.createElement('div');
-                bundleCard.className = `bundle-card ${currentNetwork}-bundle`;
-                bundleCard.innerHTML = `
-                    <h3 class="bundle-title">${bundle.title}</h3>
-                    <div class="bundle-details">
-                        <span class="bundle-data">${bundle.data}</span>
-                        <span class="bundle-price">${bundle.price}</span>
-                    </div>
-                    <button class="bundle-btn" data-id="${bundle.id}">Acheter</button>
-                `;
-                bundlesGrid.appendChild(bundleCard);
-            });
+            .nav-toggle {
+                display: none;
+            }
             
-            // Add event listeners to bundle buttons
-            document.querySelectorAll('.bundle-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const bundleId = btn.getAttribute('data-id');
-                    selectedBundle = [...bundles.mtn, ...bundles.orange].find(b => b.id === bundleId);
-                    openPurchaseModal(selectedBundle);
-                });
-            });
+            .nav-menu {
+                position: static;
+                width: auto;
+                height: auto;
+                background: none;
+                box-shadow: none;
+            }
+            
+            .nav-menu-header {
+                display: none;
+            }
+            
+            .nav-links {
+                display: flex;
+                padding: 0;
+            }
+            
+            .nav-links li {
+                margin-bottom: 0;
+                margin-right: 15px;
+            }
+            
+            .nav-links a {
+                color: var(--white);
+                padding: 5px 0;
+            }
+            
+            .nav-links a:hover {
+                background: none;
+                text-decoration: underline;
+            }
         }
-
-        function openPurchaseModal(bundle) {
-            bundleNameInput.value = `${bundle.title} - ${bundle.data} (${bundle.price})`;
-            purchaseModal.classList.add('active');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+        
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+            }
             
-            // Configure Campay SDK with the selected bundle's price
-            campay.options({
-                payButtonId: "payButton",
-                description: `Achat forfait ${bundle.title}`,
-                amount: bundle.amount,
-                currency: "XAF",
-                externalReference: `internet_${bundle.id}_${Date.now()}`,
-                redirectUrl: "",
-                showAmount: false,
-                allowAmountOverride: false
-            });
+            .bundles-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
-
-        // Close purchase modal
-        function closePurchaseModal() {
-            purchaseModal.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
+        
+        @media (min-width: 992px) {
+            .bundles-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Forfaits Internet Cameroun</div>
+            <button class="nav-toggle">☰</button>
+            <nav class="nav-menu">
+                <div class="nav-menu-header">
+                    <div class="logo">Menu</div>
+                    <button class="close-menu">×</button>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Forfaits Internet</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Aide</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="overlay"></div>
 
-        // Show success message
-        function showSuccessMessage() {
-            successMessage.classList.add('active');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+    <!-- Main Content -->
+    <main class="container">
+        <div class="network-tabs">
+            <div class="tab active" data-network="mtn">MTN</div>
+            <div class="tab" data-network="orange">Orange</div>
+        </div>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-duration="all">Tous</button>
+            <button class="filter-btn" data-duration="1">1 Jour</button>
+            <button class="filter-btn" data-duration="7">7 Jours</button>
+            <button class="filter-btn" data-duration="30">30 Jours</button>
+        </div>
+
+        <div class="bundles-container">
+            <div class="bundles-grid" id="bundles-grid">
+                <!-- Bundles will be loaded here dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Bundle Purchase Modal -->
+    <div class="modal" id="purchaseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Acheter un forfait</h3>
+                <button class="close-modal">×</button>
+            </div>
+            <form id="purchaseForm">
+                <div class="form-group">
+                    <label for="bundle-name">Forfait sélectionné</label>
+                    <input type="text" id="bundle-name" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="recipient-phone">Numéro de téléphone du bénéficiaire *</label>
+                    <input type="tel" id="recipient-phone" required placeholder="6XXXXXXXX" pattern="[0-9]{9}" title="Entrez un numéro Camerounais valide (9 chiffres)">
+                </div>
+                <div class="form-group">
+                    <label for="payer-phone">Votre numéro de téléphone *</label>
+                    <input type="tel" id="payer-phone" required placeholder="6XXXXXXXX" pattern="[0-9]{9}" title="Entrez un numéro Camerounais valide (9 chiffres)">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close-modal-btn">Annuler</button>
+                    <button type="submit" class="btn btn-primary" id="payButton">Payer avec Mobile Money</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        <div class="success-icon">✓</div>
+        <div class="success-text">Félicitations! Votre forfait sera activé dans quelques minutes.</div>
+        <button class="close-success">Fermer</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: support@forfaitscmr.com</p>
+                <p>Téléphone: +237 691 586 235</p>
+                <p>WhatsApp: +237 655 123 456</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liens rapides</h3>
+                <a href="#">Accueil</a>
+                <a href="#">Forfaits MTN</a>
+                <a href="#">Forfaits Orange</a>
+                <a href="#">Aide</a>
+            </div>
+            <div class="footer-section">
+                <h3>Réseaux sociaux</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Forfaits Internet Cameroun. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Campay SDK -->
+   <script src="https://www.campay.net/sdk/js?app-id=t4-CJchgj_KuCtVpLMKZdXJBuxwi-8tniwJnD_jhPHow1doXKZx4BoSWU2Ib5uLO34wRiAf3gADlFnEAYKdZoQ"></script>
+    <script>
+      // Bundle Data
+const bundles = {
+    mtn: [
+        {
+            id: "mtn1",
+            title: "Surf Day 1000",
+            data: "5 GB pour 1 jour",
+            price: "1000 FCFA",
+            duration: 1,
+            amount: 1000
+        },
+        {
+            id: "mtn7",
+            title: "Surf Day 2000",
+            data: "12 GB pour 1 jour",
+            price: "2000 FCFA",
+            duration: 1,
+            amount: 2000
+        },
+        {
+            id: "mtn2",
+            title: "Surf Week 1000",
+            data: "4 GB pour 7 jours",
+            price: "1000 FCFA",
+            duration: 7,
+            amount: 1000
+        },
+        {
+            id: "mtn6",
+            title: "Surf Week 3000",
+            data: "Data Illimite(3G) pour 7 jours",
+            price: "3000 FCFA",
+            duration: 7,
+            amount: 3000
+        },
+        {
+            id: "mtn3",
+            title: "Surf Month 8000",
+            data: "2 GB par jour pour 30 jours",
+            price: "8000 FCFA",
+            duration: 30,
+            amount: 8000
+        },
+        {
+            id: "mtn4",
+            title: "Surf Month 5000",
+            data: "10 GB + Illimite(3G) pour 30 jours",
+            price: "5000 FCFA",
+            duration: 30,
+            amount: 5000
+        },
+        {
+            id: "mtn5",
+            title: "Daily Bundle 1500F",
+            data: "8 GB pour 1 jour",
+            price: "1500 FCFA",
+            duration: 1,
+            amount: 1500
+        },
+        {
+            id: "mtn8",
+            title: "Surf Month 1000",
+            data: "10 GB pour 30 jours",
+            price: "1000 FCFA",
+            duration: 30,
+            amount: 1000
         }
-
-        // Close success message
-        function closeSuccessMessage() {
-            successMessage.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
+    ],
+    orange: [
+        {
+            id: "orange1",
+            title: "Surf Day 1000",
+            data: "5 GB pour 1 jour",
+            price: "1000 FCFA",
+            duration: 1,
+            amount: 1000
+        },
+        {
+            id: "orange7",
+            title: "Surf Day 2000",
+            data: "12 GB pour 1 jour",
+            price: "2000 FCFA",
+            duration: 1,
+            amount: 2000
+        },
+        {
+            id: "orange2",
+            title: "Surf Week 1000",
+            data: "4 GB pour 7 jours",
+            price: "1000 FCFA",
+            duration: 7,
+            amount: 1000
+        },
+        {
+            id: "orange6",
+            title: "Surf Week 3000",
+            data: "Data Illimite(3G) pour 7 jours",
+            price: "3000 FCFA",
+            duration: 7,
+            amount: 3000
+        },
+        {
+            id: "orange3",
+            title: "Surf Month 8000",
+            data: "2 GB par jour pour 30 jours",
+            price: "8000 FCFA",
+            duration: 30,
+            amount: 8000
+        },
+        {
+            id: "orange4",
+            title: "Surf Month 5000",
+            data: "10 GB + Illimite(3G) pour 30 jours",
+            price: "5000 FCFA",
+            duration: 30,
+            amount: 5000
+        },
+        {
+            id: "orange5",
+            title: "Daily Bundle 1500F",
+            data: "8 GB pour 1 jour",
+            price: "1500 FCFA",
+            duration: 1,
+            amount: 1500
+        },
+        {
+            id: "orange8",
+            title: "Surf Month 1000",
+            data: "10 GB pour 30 jours",
+            price: "1000 FCFA",
+            duration: 30,
+            amount: 1000
         }
+    ]
+};
 
-        // Setup all event listeners
-        function setupEventListeners() {
-            // Navigation toggle
-            navToggle.addEventListener('click', () => {
-                navMenu.classList.add('active');
-                overlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-            
-            closeMenu.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-            
-            overlay.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                purchaseModal.classList.remove('active');
-                successMessage.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-            
-            // Network tabs
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-                    currentNetwork = tab.getAttribute('data-network');
-                    renderBundles();
-                });
-            });
-            
-            // Filter buttons
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    currentDuration = btn.getAttribute('data-duration');
-                    renderBundles();
-                });
-            });
-            
-            // Modal close buttons
-            closeModalBtn.addEventListener('click', closePurchaseModal);
-            closeModalBtns.forEach(btn => {
-                btn.addEventListener('click', closePurchaseModal);
-            });
-            
-            // Purchase form submission
-            purchaseForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const recipientPhone = document.getElementById('recipient-phone').value;
-                const payerPhone = document.getElementById('payer-phone').value;
-                
-                // Validate phone numbers (Cameroon numbers start with 6, 7, or 2)
-                if(!recipientPhone.match(/^[67]\d{8}$/)) {
-                    alert('Veuillez entrer un numéro de bénéficiaire valide (9 chiffres commençant par 6 ou 7)');
-                    return;
-                }
-                
-                if(!payerPhone.match(/^[67]\d{8}$/)) {
-                    alert('Veuillez entrer votre numéro valide (9 chiffres commençant par 6 ou 7)');
-                    return;
-                }
-                
-                // The actual payment is handled by Campay SDK
-                campay.pay({
-                    phone: payerPhone,
-                    amount: selectedBundle.amount,
-                    description: `Forfait ${selectedBundle.title} pour ${recipientPhone}`
-                });
-            });
-            
-            // Success message close
-            closeSuccessBtn.addEventListener('click', closeSuccessMessage);
-            
-            // Campay callbacks
-            campay.onSuccess = function(data) { 
-                console.log('Payment success:', data);
-                closePurchaseModal();
-                showSuccessMessage();
-                
-                // Reset form
-                purchaseForm.reset();
-            };
-            
-            campay.onFail = function(data) { 
-                console.log('Payment failed:', data);
-                alert('Le paiement a échoué. Veuillez réessayer.');
-            };
-            
-            campay.onModalClose = function(data) { 
-                console.log('Payment modal closed:', data);
-            };
+// DOM Elements
+const navToggle = document.querySelector('.nav-toggle');
+const closeMenu = document.querySelector('.close-menu');
+const navMenu = document.querySelector('.nav-menu');
+const overlay = document.querySelector('.overlay');
+const tabs = document.querySelectorAll('.tab');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const bundlesGrid = document.getElementById('bundles-grid');
+const purchaseModal = document.getElementById('purchaseModal');
+const closeModalBtn = document.querySelector('.close-modal');
+const closeModalBtns = document.querySelectorAll('.close-modal-btn');
+const purchaseForm = document.getElementById('purchaseForm');
+const bundleNameInput = document.getElementById('bundle-name');
+const recipientPhoneInput = document.getElementById('recipient-phone');
+const payerPhoneInput = document.getElementById('payer-phone');
+const successMessage = document.getElementById('successMessage');
+const closeSuccessBtn = document.querySelector('.close-success');
+const payButton = document.getElementById('payButton');
+
+// Current selected network and duration filter
+let currentNetwork = 'mtn';
+let currentDuration = 'all';
+let selectedBundle = null;
+let campayReady = false;
+
+// Initialize the page
+function init() {
+    renderBundles();
+    setupEventListeners();
+    checkCampayReady();
+}
+
+// Check if Campay SDK is ready
+function checkCampayReady() {
+    if (typeof campay !== 'undefined') {
+        campayReady = true;
+        console.log('Campay SDK is ready');
+    } else {
+        console.warn('Campay SDK not loaded yet, retrying...');
+        setTimeout(checkCampayReady, 500);
+    }
+}
+
+// Render bundles based on current filters
+function renderBundles() {
+    bundlesGrid.innerHTML = '';
+    
+    const filteredBundles = bundles[currentNetwork].filter(bundle => {
+        if (currentDuration === 'all') return true;
+        return bundle.duration === parseInt(currentDuration);
+    });
+    
+    if (filteredBundles.length === 0) {
+        bundlesGrid.innerHTML = '<p class="no-bundles">Aucun forfait disponible pour ces critères.</p>';
+        return;
+    }
+    
+    filteredBundles.forEach(bundle => {
+        const bundleCard = document.createElement('div');
+        bundleCard.className = `bundle-card ${currentNetwork}-bundle`;
+        bundleCard.innerHTML = `
+            <h3 class="bundle-title">${bundle.title}</h3>
+            <div class="bundle-details">
+                <span class="bundle-data">${bundle.data}</span>
+                <span class="bundle-price">${bundle.price}</span>
+            </div>
+            <button class="bundle-btn" data-id="${bundle.id}">Acheter</button>
+        `;
+        bundlesGrid.appendChild(bundleCard);
+    });
+    
+    // Add event listeners to bundle buttons
+    document.querySelectorAll('.bundle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const bundleId = btn.getAttribute('data-id');
+            selectedBundle = [...bundles.mtn, ...bundles.orange].find(b => b.id === bundleId);
+            openPurchaseModal(selectedBundle);
+        });
+    });
+}
+
+function openPurchaseModal(bundle) {
+    selectedBundle = bundle;
+    bundleNameInput.value = `${bundle.title} - ${bundle.data} (${bundle.price})`;
+    
+    // Reset form and enable payment button
+    purchaseForm.reset();
+    payButton.disabled = false;
+    payButton.textContent = 'Payer avec Mobile Money';
+    
+    purchaseModal.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Configure Campay payment if SDK is ready
+    if (campayReady) {
+        configureCampayPayment();
+    } else {
+        console.warn('Campay not ready yet, will configure when ready');
+    }
+}
+
+function configureCampayPayment() {
+    if (!selectedBundle) return;
+    
+    console.log('Configuring Campay with amount:', selectedBundle.amount);
+    
+    campay.options({
+        payButtonId: "payButton",
+        description: `Forfait ${selectedBundle.title}`,
+        amount: selectedBundle.amount,
+        currency: "XAF",
+        externalReference: `internet_${selectedBundle.id}_${Date.now()}`,
+        redirectUrl: "",
+        showAmount: false,
+        allowAmountOverride: false
+    });
+}
+
+// Close purchase modal
+function closePurchaseModal() {
+    purchaseModal.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Show success message
+function showSuccessMessage() {
+    successMessage.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close success message
+function closeSuccessMessage() {
+    successMessage.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Validate Cameroon phone number
+function validatePhoneNumber(phone) {
+    return /^[67]\d{8}$/.test(phone);
+}
+
+// Setup all event listeners
+function setupEventListeners() {
+    // Navigation toggle
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+    
+    closeMenu.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    
+    overlay.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        purchaseModal.classList.remove('active');
+        successMessage.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    
+    // Network tabs
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            currentNetwork = tab.getAttribute('data-network');
+            renderBundles();
+        });
+    });
+    
+    // Filter buttons
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentDuration = btn.getAttribute('data-duration');
+            renderBundles();
+        });
+    });
+    
+    // Modal close buttons
+    closeModalBtn.addEventListener('click', closePurchaseModal);
+    closeModalBtns.forEach(btn => {
+        btn.addEventListener('click', closePurchaseModal);
+    });
+    
+    // Purchase form submission
+    purchaseForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const recipientPhone = recipientPhoneInput.value.trim();
+        const payerPhone = payerPhoneInput.value.trim();
+        
+        // Validate phone numbers
+        if (!validatePhoneNumber(recipientPhone)) {
+            alert('Veuillez entrer un numéro de bénéficiaire valide (9 chiffres commençant par 6 ou 7)');
+            return;
         }
+        
+        if (!validatePhoneNumber(payerPhone)) {
+            alert('Veuillez entrer votre numéro valide (9 chiffres commençant par 6 ou 7)');
+            return;
+        }
+        
+        if (!campayReady) {
+            alert('Le système de paiement est temporairement indisponible');
+            return;
+        }
+        
+        if (!selectedBundle) {
+            alert('Aucun forfait sélectionné');
+            return;
+        }
+        
+        try {
+            // Process payment with Campay
+            const paymentData = await campay.pay({
+                phone: payerPhone,
+                amount: selectedBundle.amount,
+                description: `Forfait ${selectedBundle.title} pour ${recipientPhone}`
+            });
+            
+            console.log('Payment successful:', paymentData);
+            closePurchaseModal();
+            showSuccessMessage();
+        } catch (error) {
+            console.error('Payment error:', error);
+            alert(`Erreur de paiement: ${error.message || 'Une erreur est survenue'}`);
+        }
+    });
+    
+    // Success message close
+    closeSuccessBtn.addEventListener('click', closeSuccessMessage);
+    
+    // Reconfigure Campay when it becomes ready
+    document.addEventListener('campayReady', () => {
+        campayReady = true;
+        if (purchaseModal.classList.contains('active')) {
+            configureCampayPayment();
+        }
+    });
+}
 
-        // Initialize the app
-        document.addEventListener('DOMContentLoaded', init);
+// Initialize the app when DOM is loaded
+document.addEventListener('DOMContentLoaded', init);
+
+// Fallback event for Campay readiness
+if (typeof campay !== 'undefined') {
+    document.dispatchEvent(new Event('campayReady'));
+}
     </script>
 </body>
 </html>
